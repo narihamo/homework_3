@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+#wrapper {
+    grid-column: 4/10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wrapper .news__title {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#wrapper p {
+    font-size: 1.2rem;
+}
+
+.h1_pink {
+    background-color: rgb(245, 164, 155);
+    color: white;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.news__brief {
+    margin: 0.6em 0 0.7em;
+    position: relative;
+}
+.news__brief::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    bottom: -0.6em;
+    left: 0;
+    background-color: lightgray;
+}
+
+.news__comment_add {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1.5em;
+    position: relative;
+}
+
+.news__comment_add textarea {
+    flex: 1 0 auto;
+    margin-right: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    padding: 1em;
+    box-sizing: border-box;
+}
+.news__comment_add button {
+    max-width: 200px;
+    border: none;
+    padding: 0.3em 0.8em;
+    background-color: rgb(245, 164, 155);
+    color: white;
+    font-size: 1.3rem;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.news__comment_add button:hover {
+    background-color: rgb(241, 153, 143);
+}
+.news__comment_add button:active {
+    background-color: rgb(241, 136, 124);
+}
+
+#form-wrap {
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    padding: 0.8em 0.8em;
+    color: #9c9c9c;
+}
+
+.comment-inputs {
+    min-width: 200px;
+    max-width: 20%;
+    height: 3em;
+    margin: 0.3em 0.3em 0.3em 0;
+    padding: 0.3em 0.8em;
+    font-size: 1em;
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    outline : none;
+}
+
+.comment-area {
+    min-width: 100%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    resize: none;
+}
+
+.comments-field {
+    display: none;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 0.8em 0.8em;
+    margin-top: 0.8em;
+    box-sizing: border-box; 
+    border: 1px solid #9c9c9c;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.comment-text {
+    display: block;
+    background-color: #fff;
+    outline : none;
+    width: 100%;
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    margin: 0.5em 0;
+    padding: 0.7em;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    text-align: left;
+}
+
+.comment {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.comment__name-surname {
+    font-size: 0.8em;
+}
+.comment-time {
+    display: inline-block;
+    font-size: 0.6em;
+    text-align: right;
+}
+
+.sort-icon {
+    cursor:  pointer;
+    margin-right: 0.5em;
+}

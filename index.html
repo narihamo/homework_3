@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <div id="wrapper">
+        <h1 id="news__title">
+            Spin IT Breaking News
+        </h1>
+        <video width="400" height="300" controls="controls" src="./assets/cat.mp4"></video>
+        <p class="news__brief">
+            Коту Пуське сегодня вставать в 6 часов утра &#128561;! Скорее оставьте ему слова поддержки &#129392;.
+        </p>
+
+        <div class="news__comment_add">
+            <div id="form-wrap">
+                <form>
+                    <input type="text" name='comment-name' class='comment-inputs comment-name' placeholder='Введите имя:'>
+                    <input type="text" name='comment-surname' class='comment-inputs comment-surname' placeholder='Введите фамилию:'>
+                    <textarea name="comment-body" class="comment-area comment-inputs" cols="25" rows="10" placeholder="Оставьте комментарий:"></textarea>
+
+                    <button id='add-comment'>
+                        Добавить
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="comments-field">
+            <img src="./assets/descending-sort.png" class='sort-icon discending'>
+            <img src="./assets/ascending-sort.png" class='sort-icon ascending'>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
