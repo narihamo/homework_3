@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 class UserComment 
 {
@@ -7,7 +7,8 @@ class UserComment
 		this.name = name;
 		this.surname = surname;
 		this.text = text;
-		this.time = Math.floor(Date.now() / 1000)
+		this.time = Math.floor(Date.now() / 1000);
+		this.id = comments.length;
 	}
 }
 
@@ -28,11 +29,12 @@ document.getElementById('add-comment').onclick = function() // добавлен�
 	// вывод коммента
 	let commentsField = document.querySelector('.comments-field');
 	commentsField.style = 'display: block;'
-	commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap'>
+	commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap' id='${comment.id}'>
 														<div class='comment'>
+															<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
 															<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
 															<em class='comment-time'>${timeConverter(comment.time)}</em>
-															<span class='comment-text' role='textbox' contenteditable>${comment.text}</span>
+															<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
 														</div>														
 													</div>`)
 }
@@ -53,6 +55,8 @@ function timeConverter(UNIX_timestamp) // перевод времени из uni
 
 document.querySelector('.discending').onclick = function() // сортировка по убыванию
 {
+	idComments = document.querySelectorAll('.comments-field')
+
 	deleteCommentsWrap();
 
 	comments.sort((a, b) => a.time > b.time ? -1 : 1);
@@ -61,11 +65,12 @@ document.querySelector('.discending').onclick = function() // сортировк
 	let commentsField = document.querySelector('.comments-field')
 	for (let comment of comments)
 	{
-		commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap'>
+		commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap' id='${comment.id}'>
 														<div class='comment'>
+															<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
 															<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
 															<em class='comment-time'>${timeConverter(comment.time)}</em>
-															<span class='comment-text' role='textbox' contenteditable>${comment.text}</span>
+															<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
 														</div>														
 													</div>`)
 	}
@@ -77,19 +82,20 @@ document.querySelector('.ascending').onclick = function() // сортировк�
 
 	comments.sort((a, b) => a.time > b.time ? 1 : -1);
 
+	console.log(comments);
 	let commentsField = document.querySelector('.comments-field')
 	for (let comment of comments)
 	{
-		commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap'>
+		commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap id='${comment.id}'>
 														<div class='comment'>
+															<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
 															<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
 															<em class='comment-time'>${timeConverter(comment.time)}</em>
-															<span class='comment-text' role='textbox' contenteditable>${comment.text}</span>
+															<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
 														</div>														
 													</div>`)
 	}
 }
-
 function deleteCommentsWrap()
 {
 	let commentsWrap = document.querySelectorAll('.comment-wrap');
@@ -99,3 +105,23 @@ function deleteCommentsWrap()
     	item.remove();
 	}
 }
+
+// function deleteComment()
+// {
+// 	let commentItem = event.target;
+// 	let idComment =  commentItem.parentNode.parentNode.id;
+// 	commentItem.parentNode.parentNode.remove();
+
+// 	comments.forEach(function()
+// 		{
+// 			for(let i = 0; i < comments.length; i++)
+// 			{
+// 				if (comments[i].id == idComment)
+// 				{
+// 					comments.splice(i, 1); // splice
+// 				}
+// 			}
+// 		});
+	
+// 	console.log(comments);
+// }

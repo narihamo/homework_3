@@ -153,12 +153,14 @@ video {
     font-size: 0.8em;
 }
 .comment-time {
-    display: inline-block;
     font-size: 0.6em;
-    text-align: right;
 }
 
 .sort-icon {
-    cursor:  pointer;
+    cursor: pointer;
     margin-right: 0.5em;
+    margin-bottom: 0.5em;
+}
+.delete-icon {
+    cursor: pointer;
 }
