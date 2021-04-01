@@ -1,5 +1,3 @@
-// 'use strict'
-
 class UserComment 
 {
 	constructor(name, surname, text) 
@@ -30,13 +28,13 @@ document.getElementById('add-comment').onclick = function() // добавлен�
 	let commentsField = document.querySelector('.comments-field');
 	commentsField.style = 'display: block;'
 	commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap' id='${comment.id}'>
-														<div class='comment'>
-															<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
-															<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
-															<em class='comment-time'>${timeConverter(comment.time)}</em>
-															<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
-														</div>														
-													</div>`)
+								<div class='comment'>
+									<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
+									<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
+									<em class='comment-time'>${timeConverter(comment.time)}</em>
+									<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
+								</div>														
+							</div>`)
 }
 
 function timeConverter(UNIX_timestamp) // перевод времени из unix в привычный формат
@@ -66,13 +64,13 @@ document.querySelector('.discending').onclick = function() // сортировк
 	for (let comment of comments)
 	{
 		commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap' id='${comment.id}'>
-														<div class='comment'>
-															<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
-															<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
-															<em class='comment-time'>${timeConverter(comment.time)}</em>
-															<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
-														</div>														
-													</div>`)
+									<div class='comment'>
+										<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
+										<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
+										<em class='comment-time'>${timeConverter(comment.time)}</em>
+										<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
+									</div>														
+								</div>`)
 	}
 }
 
@@ -87,13 +85,13 @@ document.querySelector('.ascending').onclick = function() // сортировк�
 	for (let comment of comments)
 	{
 		commentsField.insertAdjacentHTML('beforeend', `<div class='comment-wrap id='${comment.id}'>
-														<div class='comment'>
-															<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
-															<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
-															<em class='comment-time'>${timeConverter(comment.time)}</em>
-															<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
-														</div>														
-													</div>`)
+									<div class='comment'>
+										<img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" class='delete-icon' onclick='deleteComment()'/>
+										<span class='comment__name-surname'>${comment.name + ' ' + comment.surname}</span>
+										<em class='comment-time'>${timeConverter(comment.time)}</em>
+										<div class='comment-text' role='textbox' contenteditable onblur='redactComment()'>${comment.text}</div>
+									</div>														
+								</div>`)
 	}
 }
 function deleteCommentsWrap()
@@ -106,22 +104,38 @@ function deleteCommentsWrap()
 	}
 }
 
-// function deleteComment()
-// {
-// 	let commentItem = event.target;
-// 	let idComment =  commentItem.parentNode.parentNode.id;
-// 	commentItem.parentNode.parentNode.remove();
+function deleteComment()
+{
+	let commentItem = event.target;
+	let idComment =  commentItem.parentNode.parentNode.id;
+	commentItem.parentNode.parentNode.remove();
 
-// 	comments.forEach(function()
-// 		{
-// 			for(let i = 0; i < comments.length; i++)
-// 			{
-// 				if (comments[i].id == idComment)
-// 				{
-// 					comments.splice(i, 1); // splice
-// 				}
-// 			}
-// 		});
+	comments.forEach(function()
+		{
+			for(let i = 0; i < comments.length; i++)
+			{
+				if (comments[i].id == idComment)
+				{
+					comments.splice(i, 1);
+				}
+			}
+		});
 	
-// 	console.log(comments);
+	console.log(comments);
+}
+
+// function redactComment()
+// {
+// 	let comm = event.target;
+// 	let commText = comm.value;
+// 	console.log(commText);
+// 	let idComment =  comm.parentNode.parentNode.id;
+// 	console.log(idComment);
+
+	/* Я не понимаю почему value не передает текст в комментарии, без этого момента все понятно, нужно 
+	получить заменить текст в обьекте комментария на текст в диве, для этого я хотел получить этот текст 
+	при помощи value, но я получаю undefined. Пытался найти решение в инете, но видимо я плохо искал и
+	ничего дельного не нашел	
+	*/
+	
 // }
